@@ -106,17 +106,17 @@ describe('function shallowCopy', () => {
     test("copy without accept function", () => {
         let dst = {'my': 'myVal'};
         let res = shallowCopy(dst, {'a': 'a', 'b': 'bb'});
-        assert(res.my == 'myVal');
-        assert(res.a == 'a');
-        assert(res.b == 'bb');
+        assert(res.my === 'myVal');
+        assert(res.a === 'a');
+        assert(res.b === 'bb');
         assert(res === dst);
     });
 
     test("copy + accept function", () => {
         let dst = {'my': 'myVal'};
         let res = shallowCopy(dst, {'aa': 'a', 'b': 'bb', cc: 'cc'}, (key, sval) => key.length == 2);
-        assert(res.my == 'myVal');
-        assert(res.aa == 'a');
+        assert(res.my === 'myVal');
+        assert(res.aa === 'a');
         assert(res.cc === 'cc');
         assert(res.b === undefined);
         assert(res === dst);
@@ -125,8 +125,8 @@ describe('function shallowCopy', () => {
     test("copy + keys array", () => {
         let dst = {'my': 'myVal'};
         let res = shallowCopy(dst, {'aa': 'a', 'b': 'bb', cc: 'cc'}, ['aa', 'cc']);
-        assert(res.my == 'myVal');
-        assert(res.aa == 'a');
+        assert(res.my === 'myVal');
+        assert(res.aa === 'a');
         assert(res.cc === 'cc');
         assert(res.b === undefined);
         assert(res === dst);
@@ -229,12 +229,12 @@ describe('function objectToStr / strToObject', () => {
     test('objectToStr', () => {
         let obj = {key0:'value0', key1:7172};
         let str = objectToStr(obj, ',', ':=');
-        expect(str).toBe('aaa');
+        expect(str).toBe('key0:=value0,key1:=7172');
     });
 
     test('objectToStr', () => {
         let obj = strToObject('k=1#a=ala', '#');
-        expect(obj.k).toBe('1');
+        expect(obj.k).toBe(1);
         expect(obj.a).toBe('ala');
     });
 
