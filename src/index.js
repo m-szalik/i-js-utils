@@ -54,7 +54,9 @@ if (!Array.prototype.indexOf) {
 }
 
 
-// public functions
+// public functions:
+
+
 /**
  * Copy properties from src to dst
  * @param dst
@@ -62,7 +64,7 @@ if (!Array.prototype.indexOf) {
  * @param acceptFunction = function(key, srcVal) decide if copy that key || array of keys to copy || undefined == copy all
  * @returns dst
  */
-module.exports.shallowCopy = function(dst, src, acceptFunction) {
+function shallowCopy(dst, src, acceptFunction) {
     if (dst === undefined || dst === null) {
         throw 'Destination (dst) is null or undefined - ' + dst;
     }
@@ -85,7 +87,8 @@ module.exports.shallowCopy = function(dst, src, acceptFunction) {
         }
     }
     return dst;
-};
+}
+module.exports.shallowCopy = shallowCopy;
 
 /**
  * Copy all properties from src to dst except those listed in arrExcept
@@ -109,7 +112,7 @@ module.exports.shallowCopyExcept = function(dst, src, arrExcept) {
  * If arguments are equal
  * (hint: null != undefined)
  */
-module.exports.isEquivalent = function(a, b) {
+function isEquivalent(a, b) {
     if (a === b) {
         return true;
     }
@@ -135,7 +138,9 @@ module.exports.isEquivalent = function(a, b) {
         }
     }
     return false;
-};
+}
+module.exports.isEquivalent = isEquivalent;
+
 
 module.exports.isEmptyObject = function(obj) {
     if (obj === null || obj === undefined) {
