@@ -293,6 +293,25 @@ module.exports.objectToStr = function(obj, propJoin, valueJoin) {
     return str;
 };
 
+function convertStringVal(str) {
+    if (str === undefined || str == null) {
+        return str;
+    }
+    if (str === 'null') {
+        return null;
+    }
+    if (str === 'undefined') {
+        return undefined;
+    }
+    if(str.match(/^-?\d+$/)) {
+        return parseInt(str);
+    } else if(str.match(/^\d+\.\d+$/)) {
+        return parseFloat(str);
+    } else {
+        return str;
+    }
+}
+
 /**
  * Convert string to object by splitting object's properties using propSplit and values using valueSplit
  * @param str text to be converted
@@ -312,7 +331,7 @@ module.exports.strToObject = function(str, propSplit, valueSplit) {
     for(let index in arr) {
         let e = arr[index];
         let vp = e.split(valueSplit, 2);
-        obj[vp[0]] = vp.length > 1 ? vp[1] : null;
+        obj[vp[0]] = vp.length > 1 ? convertStringVal(vp[1]) : undefined;
     }
     return obj;
 };

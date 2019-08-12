@@ -233,9 +233,13 @@ describe('function objectToStr / strToObject', () => {
     });
 
     test('objectToStr', () => {
-        let obj = strToObject('k=1#a=ala', '#');
+        let obj = strToObject('k=1#a=ala#n=null#u#f=12.88#i=-9', '#');
         expect(obj.k).toBe(1);
         expect(obj.a).toBe('ala');
+        expect(obj.n).toBe(null);
+        expect(obj.u).toBe(undefined);
+        expect(obj.f).toBe(12.88);
+        expect(obj.i).toBe(-9);
     });
 
 });
