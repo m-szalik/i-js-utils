@@ -6,4 +6,7 @@ script:
   - npm run build
   - ./node_modules/jest/bin/jest.js
 
+after_success:
+  - ./node_modules/codecov/bin/codecov -t 6190592a-c650-41b2-883c-0a810a7400f2
+
 
