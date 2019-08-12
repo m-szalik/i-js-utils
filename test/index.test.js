@@ -1,5 +1,5 @@
-import assert from "assert";
-import {isNotBlank,isEmptyObject,setObjProperty,getObjProperty, isValidNIP, isValidREGON, isValidEmail, shallowCopy, shallowCopyExcept, isEquivalent, devOnly} from '../src/index';
+import assert from 'assert';
+import {isNotBlank,isEmptyObject,setObjProperty,getObjProperty, isValidNIP, isValidREGON, isValidEmail, shallowCopy, shallowCopyExcept, isEquivalent, devOnly, objectToStr, strToObject} from '../src/index';
 
 
 describe('function isNotBlank', () => {
@@ -213,4 +213,29 @@ describe('function devOnly', () => {
         devOnly(() => {  container.devMode = true;  });
         expect(container.devMode).toBe(false);
     });
+});
+
+describe('function objectToStr / strToObject', () => {
+    test('objectToStr - null or undefined (test)', () => {
+        expect(objectToStr(null)).toBe(null);
+        expect(objectToStr(undefined)).toBe(undefined);
+    });
+
+    test('strToObject - null or undefined (test)', () => {
+        expect(strToObject(null)).toBe(null);
+        expect(strToObject(undefined)).toBe(undefined);
+    });
+
+    test('objectToStr', () => {
+        let obj = {key0:'value0', key1:7172};
+        let str = objectToStr(obj, ',', ':=');
+        expect(str).toBe('aaa');
+    });
+
+    test('objectToStr', () => {
+        let obj = strToObject('k=1#a=ala', '#');
+        expect(obj.k).toBe('1');
+        expect(obj.a).toBe('ala');
+    });
+
 });
