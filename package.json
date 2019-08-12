@@ -1,0 +1,61 @@
+{
+  "name": "i-js-utils",
+  "version": "1.0.0",
+  "description": "i JavaScript utils",
+  "license": "MIT",
+  "author": "m-szalik",
+  "main": "lib/index.js",
+  "keywords": [
+    "react",
+    "reactjs",
+    "component",
+    "javascript",
+    "react-component",
+    "javascript-utils"
+  ],
+  "bugs": {
+    "url": "https://github.com/m-szalik/i-react-utils/issues"
+  },
+  "homepage": "https://github.com/m-szalik/i-react-utils/blob/master/README.md",
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "assert": "*",
+    "babel-jest": "^24.8.0",
+    "@babel/cli": "^7.5.x",
+    "babel-loader": "^7.1.x",
+    "babel-plugin-add-module-exports": "*",
+    "babel-plugin-react-transform": "*",
+    "babel-polyfill": "^6.20.0",
+    "babel-preset-es2015": "*",
+    "babel-preset-react": "*",
+    "babel-preset-stage-0": "*",
+    "codecov": "^3.0.0",
+    "envify": "*",
+    "es6-promise": "*",
+    "expose-loader": "*",
+    "jest": "^24.8.0",
+    "rimraf": "^2.4.3",
+    "transform-loader": "*",
+    "webpack": "*",
+    "webpack-dev-server": "*"
+  },
+  "scripts": {
+    "clean": "rimraf lib dist",
+    "test": "jest --watchAll",
+    "build": "./node_modules/@babel/cli/bin/babel.js --plugins add-module-exports --out-dir ./lib --no-comments --compact true --minified ./src/",
+    "prepublish": "npm run clean && npm run build",
+    "start": "node ./example/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/m-szalik/i-react-utils"
+  },
+  "jest": {
+    "verbose": true,
+    "setupTestFrameworkScriptFile": "./test-env-setup.js",
+    "collectCoverage": true
+  }
+}

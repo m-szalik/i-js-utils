@@ -1,0 +1,4 @@
+./node_modules/jest/bin/jest.js && npm run-script build
+npm publish
+git tag i-js-utils-x.x.x
+

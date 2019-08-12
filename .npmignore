@@ -1,0 +1,11 @@
+.idea
+*.iml
+src/
+test/
+
+.npmignore
+.travis.yml
+.babelrc
+PUBLISH.txt
+*.tgz
+

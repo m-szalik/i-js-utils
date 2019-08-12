@@ -1,0 +1,16 @@
+addons:
+  firefox: latest
+
+language: node_js
+node_js:
+  - "4"
+
+before_script:
+  - export DISPLAY=:99.0
+  - sh -e /etc/init.d/xvfb start
+
+script:
+  - npm run build
+  - ./node_modules/jest/bin/jest.js
+
+
