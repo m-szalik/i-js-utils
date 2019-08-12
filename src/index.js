@@ -254,3 +254,56 @@ module.exports.devOnly = function(callback) {
         callback();
     }
 };
+
+/**
+ * Convert object to string by concatenating object's properties using propJoin and values using valueJoin
+ * @param obj object to be converted
+ * @param propJoin join string for properties
+ * @param valueJoin join string for values (default =)
+ * @returns {string}
+ */
+module.exports.objectToStr = function(obj, propJoin, valueJoin) {
+    if (obj === undefined || obj == null) {
+        return obj;
+    }
+    if (valueJoin === undefined) {
+        valueJoin = '=';
+    }
+    let str = '';
+    for (let property in obj) {
+        if (obj.hasOwnProperty(property)) {
+            let val = obj[property];
+            if (val !== undefined) {
+                if (str.length > 0) {
+                    str = str + propJoin;
+                }
+                str = str + property + valueJoin + val;
+            }
+        }
+    }
+    return str;
+};
+
+/**
+ * Convert string to object by splitting object's properties using propSplit and values using valueSplit
+ * @param str text to be converted
+ * @param propSplit object properties split
+ * @param valueSplit object property values (default =)
+ * @returns {Object}
+ */
+module.exports.strToObject = function(str, propSplit, valueSplit) {
+    if (str === undefined || str == null) {
+        return str;
+    }
+    if (valueSplit === undefined) {
+        valueSplit = '=';
+    }
+    let obj = {};
+    let arr = str.split(propSplit);
+    for(let index in arr) {
+        let e = arr[index];
+        let vp = e.split(valueSplit, 2);
+        obj[vp[0]] = vp.length > 1 ? vp[1] : null;
+    }
+    return obj;
+};
