@@ -101,7 +101,7 @@ module.exports.shallowCopyExcept = function(dst, src, arrExcept) {
     let accFunc;
     if (arrExcept) {
         accFunc = function(key, srcVal) {
-            return arrExcept.indexOf(key) == -1;
+            return arrExcept.indexOf(key) === -1;
         };
     }
     return shallowCopy(dst, src, accFunc);
@@ -203,6 +203,9 @@ module.exports.getObjProperty = function(obj, propertyPath) {
  * @returns {boolean}
  */
 module.exports.isValidNIP = function(nip) {
+    if (nip === undefined || nip == null) {
+        return false
+    }
     let nipNoDashes = nip.replace(/-/g,"");
     let reg = /^[0-9]{10}$/;
     if(reg.test(nipNoDashes) === false) {
@@ -210,11 +213,14 @@ module.exports.isValidNIP = function(nip) {
     } else {
         let dig = ("" + nipNoDashes).split("");
         let check = (6 * parseInt(dig[0]) + 5 * parseInt(dig[1]) + 7 * parseInt(dig[2]) + 2 * parseInt(dig[3]) + 3 * parseInt(dig[4]) + 4 * parseInt(dig[5]) + 5 * parseInt(dig[6]) + 6 * parseInt(dig[7]) + 7 * parseInt(dig[8])) % 11;
-        return parseInt(dig[9]) == check;
+        return parseInt(dig[9]) === check;
     }
 };
 
 module.exports.isValidREGON = function(regon) {
+    if (regon === undefined || regon == null) {
+        return false
+    }
     let n = regon.length;
     let w;
     let cd = 0; // Control digit
@@ -240,6 +246,9 @@ module.exports.isValidREGON = function(regon) {
 
 
 module.exports.isValidEmail = function(email) {
+    if (email === undefined || email == null) {
+        return false
+    }
     let re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     return re.test(email);
 };
