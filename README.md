@@ -6,7 +6,12 @@
 [![codecov](https://codecov.io/gh/m-szalik/i-js-utils/branch/master/graph/badge.svg)](https://codecov.io/gh/m-szalik/i-js-utils)
 
 
-`import {isEmptyObject, isNotBlank, setObjProperty, getObjProperty, isValidNIP, isValidREGON, isValidEmail, devOnly} from 'i-react-utils';`
+```import {
+    isEmptyObject, setObjProperty, getObjProperty, objectToStr, strToObject,
+    isValidNIP, isValidREGON, isValidEmail, 
+    devOnly, isNotBlank
+ } from 'i-react-utils';
+ ```
 
 `bool isEmptyObject(object)` - true if object has no it's own properties
 
