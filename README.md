@@ -6,7 +6,8 @@
 [![codecov](https://codecov.io/gh/m-szalik/i-js-utils/branch/master/graph/badge.svg)](https://codecov.io/gh/m-szalik/i-js-utils)
 
 
-```import {
+```js
+import {
     isEmptyObject, setObjProperty, getObjProperty, objectToStr, strToObject,
     isValidNIP, isValidREGON, isValidEmail, 
     devOnly, isNotBlank
