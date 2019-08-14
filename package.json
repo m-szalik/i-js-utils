@@ -48,7 +48,7 @@
   },
   "jest": {
     "verbose": true,
-    "setupTestFrameworkScriptFile": "./test-env-setup.js",
+    "setupFilesAfterEnv": ["./test-env-setup.js"],
     "collectCoverage": true,
     "transform": {
       "^.+\\.js$": "babel-jest"
