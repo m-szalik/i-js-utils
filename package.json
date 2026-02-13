@@ -30,7 +30,7 @@
     "envify": "*",
     "es6-promise": "*",
     "expose-loader": "*",
-    "jest": "^24.8.0",
+    "jest": "^30.2.0",
     "rimraf": "^2.4.3",
     "transform-loader": "*",
     "webpack": "*",
